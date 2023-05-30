@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Donate Page</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <h1>Donate</h1>
+    <form action="payment.html">
+        <input type="submit" value="Donate Now">
+    </form>
+    <title>Payment Page</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <h1>Payment</h1>
+    <form action="invoice.html">
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" name="amount" min="1"><br><br>
+        <label for="payment-type">Payment Type:</label>
+        <select id="payment-type" name="payment-type">
+            <option value="credit-card">Credit Card</option>
+            <option value="paypal">PayPal</option>
+        </select><br><br>
+        <input type="submit" value="Pay Now">
+    </form>
+    <title>Payment Confirmation</title>
+</head>
+<body>
+  <h1>Payment Confirmation</h1>
+  
+  <h2>Invoice Details</h2>
+  
+  <p><strong>Invoice Number:</strong> INV-123456</p>
+  
+  <table>
+    <tr>
+      <th>Item</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Total</th>
+    </tr>
+    <tr>
+      <td>Item 1</td>
+      <td>2</td>
+      <td>$10</td>
+      <td>$20</td>
+    </tr>
+    <tr>
+      <td>Item 2</td>
+      <td>1</td>
+      <td>$15</td>
+      <td>$15</td>
+    </tr>
+    <tr>
+      <td colspan="3"><strong>Total Amount:</strong></td>
+      <td>$35</td>
+    </tr>
+  </table>
+  
+  <script>
+    // fetch('invoice-data-url')
+  then(response => response.json())
+  .then(data => {
+    // Populate the invoice details in HTML using data received
+    document.getElementById('invoiceNumber').textContent = data.invoiceNumber;
+    document.getElementById('totalAmount').textContent = '$' + data.totalAmount;
+    // ... populate other invoice fields
+  })
+  .catch(error => {
+    console.error('Error fetching invoice data:', error);
+  });
+
+  </script>
+  </body>
+  </head>
